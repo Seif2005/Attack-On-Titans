@@ -1,0 +1,993 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="firstAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.gui.Controller.BattleController">
+   <children>
+      <ImageView fitHeight="192.0" fitWidth="992.0" layoutX="286.0" layoutY="607.0" pickOnBounds="true">
+         <image>
+            <Image url="@../static/background.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="720.0" fitWidth="287.0" layoutY="80.0" pickOnBounds="true">
+         <image>
+            <Image url="@../static/background.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="158.0" fitWidth="278.0" layoutX="2.0" layoutY="620.0" pickOnBounds="true">
+         <image>
+            <Image url="@../static/blankSmall.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="203.0" fitWidth="530.0" layoutX="123.0" layoutY="245.0" pickOnBounds="true" rotate="-90.0">
+         <image>
+            <Image url="@../static/wall.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="790.0" fitWidth="106.0" layoutX="830.0" layoutY="-262.0" pickOnBounds="true" rotate="-90.0">
+         <image>
+            <Image url="@../static/path.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="790.0" fitWidth="106.0" layoutX="830.0" layoutY="-157.0" pickOnBounds="true" rotate="-90.0">
+         <image>
+            <Image url="@../static/path.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="790.0" fitWidth="106.0" layoutX="830.0" layoutY="-50.0" pickOnBounds="true" rotate="-90.0">
+         <image>
+            <Image url="@../static/path.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="790.0" fitWidth="106.0" layoutX="830.0" layoutY="58.0" pickOnBounds="true" rotate="-90.0">
+         <image>
+            <Image url="@../static/path.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="790.0" fitWidth="106.0" layoutX="830.0" layoutY="164.0" pickOnBounds="true" rotate="-90.0">
+         <image>
+            <Image url="@../static/path.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="1280.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true">
+         <image>
+            <Image url="@../static/background.jpeg" />
+         </image>
+      </ImageView>
+      <HBox layoutX="377.0" layoutY="70.0" prefHeight="82.0" prefWidth="1280.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="718.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="81.0" prefWidth="1342.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label fx:id="phase" alignment="CENTER" focusTraversable="false" layoutX="185.0" layoutY="19.0" prefHeight="40.0" prefWidth="267.0" text="Early" textFill="#4100f4">
+                     <font>
+                        <Font name="Bodoni MT Bold" size="28.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="score" alignment="CENTER" focusTraversable="false" layoutX="476.0" layoutY="25.0" prefHeight="35.0" prefWidth="287.0" text=" 00000" textAlignment="CENTER" textFill="#4100f4">
+                     <font>
+                        <Font name="Bell MT Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="turn" focusTraversable="false" layoutX="131.0" layoutY="23.0" prefHeight="40.0" prefWidth="44.0" text="0" textAlignment="RIGHT">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="pauseButton" accessibleRole="BUTTON" fitHeight="75.0" fitWidth="73.0" layoutX="1151.0" layoutY="3.0" onMouseClicked="#getPauseMenu" pickOnBounds="true" AnchorPane.bottomAnchor="44.400000000000006" AnchorPane.leftAnchor="1151.0" AnchorPane.rightAnchor="82.40000000000009" AnchorPane.topAnchor="3.0">
+                     <image>
+                        <Image url="@../static/pause.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Line endX="717.8999633789062" endY="12.700003623962402" layoutX="-258.0" layoutY="-6.0" startX="717.8999633789062" startY="76.83332824707031" stroke="#df5900" strokeWidth="3.0" />
+                  <Line endX="100.0" endY="14.066665649414062" layoutX="1025.0" layoutY="59.0" startX="100.0" startY="-51.999996185302734" stroke="#df5900" strokeWidth="3.0" />
+                  <ImageView fitHeight="68.0" fitWidth="73.0" layoutX="853.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../static/resources.png" />
+                     </image>
+                  </ImageView>
+                  <Line endX="717.8999633789062" endY="12.700003623962402" layoutX="-541.0" layoutY="-5.0" startX="717.8999633789062" startY="76.83332824707031" stroke="#df5900" strokeWidth="3.0" />
+                  <Line endX="717.8999633789062" endY="12.700003623962402" layoutX="66.0" layoutY="-6.0" startX="717.8999633789062" startY="76.83332824707031" stroke="#df5900" strokeWidth="3.0" />
+                  <Label fx:id="money" focusTraversable="false" layoutX="987.0" layoutY="21.0" prefHeight="35.0" prefWidth="105.0" text=" 00000" textAlignment="CENTER" textFill="#4100f4">
+                     <font>
+                        <Font name="Bell MT Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="aiButton" focusTraversable="false" layoutX="1230.0" layoutY="21.0" mnemonicParsing="false" onAction="#aiMode" prefHeight="38.0" prefWidth="40.0" style="-fx-background-radius: 100;" text="AI">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label fx:id="phase1" alignment="CENTER" focusTraversable="false" layoutX="10.0" layoutY="20.0" prefHeight="40.0" prefWidth="112.0" text="Turns" textFill="#4100f4">
+                     <font>
+                        <Font name="Bodoni MT Bold" size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <VBox layoutX="300.0" layoutY="79.2" prefHeight="721.0" prefWidth="994.0" style="-fx-border-color: Black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="286.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="79.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="wall1" fitHeight="105.0" fitWidth="193.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@M2%20Solution%20Bonus/M2%20Solution4/M2%20Solution4/M2%20Solution/src/game/gui/static/wall.jpg" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane fx:id="pathAll1" prefHeight="105.0" prefWidth="828.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="120.0" prefWidth="992.0" style="-fx-border-color: black;">
+               <children>
+                  <ImageView fx:id="wall2" fitHeight="105.0" fitWidth="193.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@M2%20Solution%20Bonus/M2%20Solution4/M2%20Solution4/M2%20Solution/src/game/gui/static/wall.jpg" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane fx:id="pathAll2" prefHeight="105.0" prefWidth="825.0" />
+               </children>
+            </HBox>
+            <HBox fillHeight="false" maxHeight="105.0" prefHeight="120.0" prefWidth="992.0" style="-fx-border-color: black;" VBox.vgrow="NEVER">
+               <children>
+                  <ImageView fx:id="wall3" fitHeight="105.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@M2%20Solution%20Bonus/M2%20Solution4/M2%20Solution4/M2%20Solution/src/game/gui/static/wall.jpg" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane fx:id="pathAll3" maxHeight="105.0" prefHeight="105.0" prefWidth="832.0" HBox.hgrow="NEVER" />
+               </children>
+            </HBox>
+            <HBox prefHeight="120.0" prefWidth="992.0" style="-fx-border-color: black;">
+               <children>
+                  <ImageView fx:id="wall4" fitHeight="105.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@M2%20Solution%20Bonus/M2%20Solution4/M2%20Solution4/M2%20Solution/src/game/gui/static/wall.jpg" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane fx:id="pathAll4" prefHeight="105.0" prefWidth="827.0" />
+               </children>
+            </HBox>
+            <HBox disable="true" prefHeight="120.0" prefWidth="992.0" style="-fx-border-color: black;">
+               <children>
+                  <ImageView fx:id="wall5" fitHeight="105.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@M2%20Solution%20Bonus/M2%20Solution4/M2%20Solution4/M2%20Solution/src/game/gui/static/wall.jpg" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane fx:id="pathAll5" prefHeight="105.0" prefWidth="825.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="200.0" prefWidth="992.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
+               <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="992.0">
+                     <children>
+                        <ImageView fitHeight="169.0" fitWidth="149.0" layoutX="178.0" layoutY="6.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../static/blankSmall.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="169.0" fitWidth="149.0" layoutX="18.0" layoutY="6.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../static/blankSmall.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="169.0" fitWidth="149.0" layoutX="336.0" layoutY="6.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../static/blankSmall.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="169.0" fitWidth="149.0" layoutX="498.0" layoutY="6.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../static/blankSmall.png" />
+                           </image>
+                        </ImageView>
+                        <BorderPane fx:id="pcPane" layoutX="24.0" layoutY="12.0" prefHeight="134.0" prefWidth="98.0" style="-fx-border-color: black;">
+                           <center>
+                              <ImageView fx:id="piercingCount" fitHeight="131.0" fitWidth="137.0" onMouseClicked="#chooseWeapon" pickOnBounds="true" BorderPane.alignment="CENTER">
+                                 <image>
+                                    <Image url="@../static/piercing.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </center>
+                           <bottom>
+                              <Label text="Piercing Cannon" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font name="Bodoni MT Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </bottom>
+                        </BorderPane>
+                        <BorderPane fx:id="scPane" layoutX="183.0" layoutY="13.0" prefHeight="134.0" prefWidth="98.0" style="-fx-border-color: black;">
+                           <center>
+                              <ImageView fx:id="sniperCount" fitHeight="131.0" fitWidth="137.0" onMouseClicked="#chooseWeapon" pickOnBounds="true" BorderPane.alignment="CENTER">
+                                 <image>
+                                    <Image url="@../static/sniper.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </center>
+                           <bottom>
+                              <Label text="Sniper Cannon" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font name="Bodoni MT Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </bottom>
+                        </BorderPane>
+                        <BorderPane fx:id="vsPane" layoutX="342.0" layoutY="13.0" prefHeight="134.0" prefWidth="98.0" style="-fx-border-color: black;">
+                           <center>
+                              <ImageView fx:id="volleySpreadCount" fitHeight="131.0" fitWidth="137.0" onMouseClicked="#chooseWeapon" pickOnBounds="true" BorderPane.alignment="CENTER">
+                                 <image>
+                                    <Image url="@../static/Volley.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </center>
+                           <bottom>
+                              <Label prefHeight="26.0" prefWidth="124.0" text="Volley Spread" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font name="Bodoni MT" size="20.0" />
+                                 </font>
+                              </Label>
+                           </bottom>
+                        </BorderPane>
+                        <BorderPane fx:id="wtPane" layoutX="503.0" layoutY="13.0" prefHeight="134.0" prefWidth="98.0" style="-fx-border-color: black;">
+                           <center>
+                              <ImageView fx:id="wallTrapCount" fitHeight="131.0" fitWidth="137.0" onMouseClicked="#chooseWeapon" pickOnBounds="true" BorderPane.alignment="CENTER">
+                                 <image>
+                                    <Image url="@../static/WallTrap.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </center>
+                           <bottom>
+                              <Label text="Wall Trap" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font name="Bodoni MT Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </bottom>
+                        </BorderPane>
+                        <Label layoutX="683.0" layoutY="9.0" prefHeight="43.0" prefWidth="274.0" text="&lt;&lt;&lt; Approaching Titans" textFill="#4100f4">
+                           <font>
+                              <Font name="Bodoni MT Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane layoutX="666.0" layoutY="55.0" prefHeight="114.0" prefWidth="285.0">
+                           <children>
+                              <HBox fx:id="approaching" prefHeight="114.0" prefWidth="302.0">
+                                 <children>
+                                    <ImageView fitHeight="114.0" fitWidth="301.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@../static/blankSmall.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children></HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <AnchorPane prefHeight="687.0" prefWidth="248.0" translateY="85.0">
+         <children>
+            <Label layoutX="19.0" layoutY="545.0" prefHeight="43.0" prefWidth="214.0" text="Weapon Description" textFill="#4100f4">
+               <font>
+                  <Font name="Bodoni MT Bold" size="25.0" />
+               </font>
+            </Label>
+            <Line endX="100.0" layoutX="192.0" layoutY="530.0" startX="-192.0" strokeWidth="2.0" />
+            <VBox layoutX="58.0" layoutY="0.8" prefHeight="529.0" prefWidth="287.0" AnchorPane.bottomAnchor="188.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="1.0">
+               <children>
+                  <AnchorPane prefHeight="83.0" prefWidth="287.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="287.0">
+                           <children>
+                              <Button fx:id="lane1" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#deployWeapon" prefHeight="46.0" prefWidth="44.0" style="-fx-background-radius: 10;" text="1" translateX="10.0" translateY="25.0">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="75.0" rotate="-90.0" text="DL" textAlignment="CENTER" translateX="20.0" translateY="40.0">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
+                              <Label fx:id="dangerLevel1" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="75.0" rotate="-90.0" text="000" textAlignment="CENTER" translateX="5.0" translateY="40.0" />
+                              <ProgressBar fx:id="healthBar1" prefHeight="18.0" prefWidth="77.0" progress="1.0" rotate="-90.0" translateY="40.0" />
+                              <GridPane>
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                       <right>
+                                          <Label fx:id="piercingCount1" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/piercing.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                    </BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/sniper.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                       <right>
+                                          <Label fx:id="sniperCount1" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                    </BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                       <right>
+                                          <Label fx:id="volleySpreadCount1" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/Volley.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                    </BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <right>
+                                          <Label fx:id="wallTrapCount1" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/WallTrap.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                    </BorderPane>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="77.0" prefWidth="287.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="285.0">
+                           <children>
+                              <Button fx:id="lane2" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#deployWeapon" prefHeight="46.0" prefWidth="44.0" style="-fx-background-radius: 10;" text="2" translateX="10.0" translateY="25.0">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="75.0" rotate="-90.0" text="DL" textAlignment="CENTER" translateX="20.0" translateY="40.0">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
+                              <Label fx:id="dangerLevel2" alignment="CENTER" prefHeight="18.0" prefWidth="75.0" rotate="-90.0" text="000" translateX="5.0" translateY="40.0" />
+                              <ProgressBar fx:id="healthBar2" prefHeight="18.0" prefWidth="77.0" progress="1.0" rotate="-90.0" translateY="40.0" />
+                              <GridPane>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                       <right>
+                                          <Label fx:id="piercingCount2" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/piercing.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                    </BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/sniper.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                       <right>
+                                          <Label fx:id="sniperCount2" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                    </BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                       <right>
+                                          <Label fx:id="volleySpreadCount2" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/Volley.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                    </BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <right>
+                                          <Label fx:id="wallTrapCount2" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/WallTrap.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                    </BorderPane>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="101.0" prefWidth="287.0">
+                     <children>
+                        <HBox prefHeight="115.0" prefWidth="287.0">
+                           <children>
+                              <Button fx:id="lane3" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#deployWeapon" prefHeight="46.0" prefWidth="44.0" style="-fx-background-radius: 10;" text="3" translateX="10.0" translateY="30.0">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="75.0" rotate="-90.0" text="DL" textAlignment="CENTER" translateX="20.0" translateY="40.0">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
+                              <Label fx:id="dangerLevel3" alignment="CENTER" prefHeight="18.0" prefWidth="75.0" rotate="-90.0" text="000" translateX="5.0" translateY="43.0" />
+                              <ProgressBar fx:id="healthBar3" prefHeight="18.0" prefWidth="77.0" progress="1.0" rotate="-90.0" translateY="45.0" />
+                              <GridPane>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                       <right>
+                                          <Label fx:id="piercingCount3" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/piercing.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                    </BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/sniper.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                       <right>
+                                          <Label fx:id="sniperCount3" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                    </BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                       <right>
+                                          <Label fx:id="volleySpreadCount3" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/Volley.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                    </BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <right>
+                                          <Label fx:id="wallTrapCount3" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/WallTrap.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                    </BorderPane>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="68.0" prefWidth="287.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="287.0">
+                           <children>
+                              <Button fx:id="lane4" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#deployWeapon" prefHeight="46.0" prefWidth="44.0" style="-fx-background-radius: 10;" text="4" translateX="10.0" translateY="28.0">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="75.0" rotate="-90.0" text="DL" textAlignment="CENTER" translateX="20.0" translateY="40.0">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
+                              <Label fx:id="dangerLevel4" alignment="CENTER" prefHeight="18.0" prefWidth="75.0" rotate="-90.0" text="000" translateX="5.0" translateY="41.0" />
+                              <ProgressBar fx:id="healthBar4" prefHeight="18.0" prefWidth="77.0" progress="1.0" rotate="-90.0" translateY="42.0" />
+                              <GridPane>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                       <right>
+                                          <Label fx:id="piercingCount4" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/piercing.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                    </BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/sniper.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                       <right>
+                                          <Label fx:id="sniperCount4" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                    </BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                       <right>
+                                          <Label fx:id="volleySpreadCount4" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/Volley.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                    </BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <right>
+                                          <Label fx:id="wallTrapCount4" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/WallTrap.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                    </BorderPane>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="92.0" prefWidth="287.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="285.0">
+                           <children>
+                              <Button fx:id="lane5" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#deployWeapon" prefHeight="46.0" prefWidth="44.0" style="-fx-background-radius: 10;" text="5" translateX="10.0" translateY="25.0">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="75.0" rotate="-90.0" text="DL" textAlignment="CENTER" translateX="20.0" translateY="40.0">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
+                              <Label fx:id="dangerLevel5" alignment="CENTER" prefHeight="18.0" prefWidth="75.0" rotate="-90.0" text="000" translateX="5.0" translateY="41.0" />
+                              <ProgressBar fx:id="healthBar5" prefHeight="18.0" prefWidth="77.0" progress="1.0" rotate="-90.0" translateY="42.0" />
+                              <GridPane>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                       <right>
+                                          <Label fx:id="piercingCount5" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/piercing.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                    </BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/sniper.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                       <right>
+                                          <Label fx:id="sniperCount5" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                    </BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                       <right>
+                                          <Label fx:id="volleySpreadCount5" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/Volley.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                    </BorderPane>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <right>
+                                          <Label fx:id="wallTrapCount5" prefHeight="18.0" prefWidth="21.0" text="x0" BorderPane.alignment="CENTER" />
+                                       </right>
+                                       <center>
+                                          <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <image>
+                                                <Image url="@../static/WallTrap.png" />
+                                             </image>
+                                          </ImageView>
+                                       </center>
+                                    </BorderPane>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+            <Button fx:id="infoButton" focusTraversable="false" layoutX="237.0" layoutY="547.0" mnemonicParsing="false" onMouseEntered="#previewWeaponsOn" onMouseExited="#previewWeaponsOff" prefHeight="34.0" prefWidth="33.0" style="-fx-background-radius: 100;" text="i">
+               <font>
+                  <Font size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="passButton" alignment="CENTER" defaultButton="true" focusTraversable="false" layoutX="69.0" layoutY="620.0" mnemonicParsing="false" onAction="#pass" prefHeight="43.0" prefWidth="161.0" style="-fx-background-radius: 20;" text="Pass" textAlignment="CENTER" textFill="#df5900" wrapText="true">
+               <font>
+                  <Font name="Bell MT Bold" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Pane fx:id="weaponsDescription" layoutX="285.0" layoutY="80.0" prefHeight="534.0" prefWidth="665.0" style="-fx-background-color: Orange;" visible="false" AnchorPane.leftAnchor="288.0" AnchorPane.rightAnchor="327.0" AnchorPane.topAnchor="80.0">
+         <children>
+            <GridPane prefHeight="530.0" prefWidth="664.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="254.73335876464841" minHeight="10.0" prefHeight="175.80000915527341" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="445.6666625976562" minHeight="10.0" prefHeight="354.99999084472654" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <BorderPane prefHeight="134.0" prefWidth="98.0" style="-fx-border-color: black;" GridPane.columnIndex="2">
+                     <center>
+                        <ImageView fx:id="wallTrap2" fitHeight="131.0" fitWidth="137.0" onMouseClicked="#chooseWeapon" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../static/Volley.png" />
+                           </image>
+                        </ImageView>
+                     </center>
+                     <bottom>
+                        <Label text="VolleySpread" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </bottom>
+                  </BorderPane>
+                  <BorderPane prefHeight="134.0" prefWidth="98.0" style="-fx-border-color: black;" GridPane.columnIndex="1">
+                     <center>
+                        <ImageView fx:id="wallTrap3" fitHeight="131.0" fitWidth="137.0" onMouseClicked="#chooseWeapon" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../static/sniper.png" />
+                           </image>
+                        </ImageView>
+                     </center>
+                     <bottom>
+                        <Label text="Sniper Cannon" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </bottom>
+                  </BorderPane>
+                  <BorderPane prefHeight="134.0" prefWidth="98.0" style="-fx-border-color: black;">
+                     <center>
+                        <ImageView fx:id="wallTrap1" fitHeight="131.0" fitWidth="137.0" onMouseClicked="#chooseWeapon" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../static/piercing.png" />
+                           </image>
+                        </ImageView>
+                     </center>
+                     <bottom>
+                        <Label text="Piercing Cannon" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </bottom>
+                  </BorderPane>
+                  <BorderPane prefHeight="134.0" prefWidth="98.0" style="-fx-border-color: black;" GridPane.columnIndex="3">
+                     <center>
+                        <ImageView fx:id="wallTrap4" fitHeight="131.0" fitWidth="137.0" onMouseClicked="#chooseWeapon" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../static/WallTrap.png" />
+                           </image>
+                        </ImageView>
+                     </center>
+                     <bottom>
+                        <Label text="Wall Trap" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </bottom>
+                  </BorderPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <children>
+                        <TextArea editable="false" layoutX="-18.0" layoutY="20.0" prefHeight="354.4" prefWidth="182.4" text="Name: Anti-Titan Shell&#10;Price: 25&#10;Damage: 10&#10;&#10;Description: Attacks the closest 5 titans to the wall on the weapon’s lane" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <TextArea editable="false" layoutX="-10.0" layoutY="6.0" prefHeight="360.8" prefWidth="172.8" text="Name: Long Range Spear&#10;Price: 25&#10;Damage: 35&#10;&#10;Description: Attacks the first closest titan to the wall on the weapon’s lane" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <children>
+                        <TextArea editable="false" layoutX="-12.0" layoutY="3.0" prefHeight="357.6" prefWidth="170.4" text="Name: Wall Spread Cannon&#10;Price: 100&#10;Damage: 5&#10;&#10;Description: Attack all the titans in between the weapon’s min and max ranges on the weapon’s lane" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <children>
+                        <TextArea editable="false" layoutX="-4.0" layoutY="11.0" prefHeight="354.4" prefWidth="166.4" text="Name: Proximity Trap&#10;Price: 75&#10;Damage: 100&#10;Description: Attacks only one titan that has already reached the walls (if more than one have already reached only the first one is attacked)" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </GridPane>
+         </children>
+      </Pane>
+      <Rectangle fx:id="pauseMenuTint" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="800.0" opacity="0.48" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: black;" visible="false" width="1280.0" />
+      <AnchorPane fx:id="pauseMenu" prefHeight="453.0" prefWidth="453.0" style="-fx-background-color: orange;" translateX="450.0" translateY="150.0" translateZ="10.0" visible="false">
+         <children>
+            <Button fx:id="resumeButton" focusTraversable="false" layoutX="156.0" layoutY="106.0" mnemonicParsing="false" onAction="#resumeGame" prefHeight="61.0" prefWidth="158.0" text="Resume">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="19.0" layoutY="20.0" text="Attack On Titans">
+               <font>
+                  <Font name="Eras Demi ITC" size="52.0" />
+               </font>
+            </Label>
+            <Button fx:id="restartButton" focusTraversable="false" layoutX="154.0" layoutY="222.0" mnemonicParsing="false" onAction="#restartGame" prefHeight="61.0" prefWidth="158.0" text="Restart">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="mainMenuButton" focusTraversable="false" layoutX="152.0" layoutY="337.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="61.0" prefWidth="158.0" text="Main Menu" wrapText="true">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="exceptionPane" layoutX="-60.0" prefHeight="250.0" prefWidth="450.0" style="-fx-background-color: Orange;" translateX="490.0" translateY="280.0" visible="false">
+         <children>
+            <Text fx:id="exceptionText" layoutX="27.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sample" textAlignment="CENTER" translateY="40.0" wrappingWidth="403.13671875">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <Button fx:id="closeException" focusTraversable="false" layoutX="195.0" layoutY="189.0" mnemonicParsing="false" onAction="#closeExceptionMethod" prefHeight="39.0" prefWidth="73.0" text="Close">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="gameOverPane" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: grey;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="837.0" fitWidth="1291.0" layoutX="-6.0" layoutY="-31.2" pickOnBounds="true" AnchorPane.bottomAnchor="-6.0" AnchorPane.topAnchor="-31.0">
+               <image>
+                  <Image url="@../Users/seifm/Desktop/360_F_130505941_aHM5DQifhmVGcs80xVUPPMfDjg5BBm3c.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="149.0" layoutX="934.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Users/seifm/Desktop/sad.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="restartButton2" defaultButton="true" focusTraversable="false" layoutX="260.0" layoutY="600.0" mnemonicParsing="false" onAction="#restartGame" prefHeight="79.0" prefWidth="274.0" text="Restart">
+               <font>
+                  <Font name="Bodoni MT Bold" size="32.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </Button>
+            <Button fx:id="mainMenuButton2" defaultButton="true" focusTraversable="false" layoutX="768.0" layoutY="597.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="86.0" prefWidth="310.0" text="Main Menu">
+               <font>
+                  <Font name="Bodoni MT Bold" size="32.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </Button>
+            <Text fill="#5875ea" layoutX="411.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You Lost!">
+               <font>
+                  <Font name="Bodoni MT Bold" size="120.0" />
+               </font>
+            </Text>
+            <Text fill="#ff0808" layoutX="249.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Over" textAlignment="CENTER">
+               <font>
+                  <Font name="Bodoni MT Black" size="150.0" />
+               </font>
+            </Text>
+            <Label fx:id="gameOverLabel" alignment="CENTER" layoutX="384.0" layoutY="380.0" prefHeight="162.0" prefWidth="603.0" text="Label" textAlignment="CENTER">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
